@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            place-items: center;
+        }
+        .phone{
+            overflow: hidden;
+            position: relative;
+            border: 8px solid black;
+            border-radius: 40px;
+            margin: 0;
+            width: 300px;
+            height: 600px;
+            background-color: #CCEFFF;
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, .10), -10px 10px 5px rgba(0, 0, 0, .10);
+        }
+        .common{
+            position: absolute;
+        }
+        .dirt{
+            border-radius: 30px 30px 0 0;
+            overflow: hidden;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, .10), -5px 5px 5px rgba(0, 0, 0, .10), 0px -2px 10px rgba(0, 0, 0, .10);
+        }
+        .grass{
+            width: 100%;
+            height: 24px;
+            background-color: #66A167;
+        }
+        .grass-2{
+            width: 100%;
+            height: 12px;
+            background-color: #9F553A;
+        }
+        .cabeza{
+            border-radius: 50px 50px 0 0;
+            box-shadow: 5px 0px 5px rgba(0, 0, 0, .20), -5px 0px 5px rgba(0, 0, 0, .20);
+        }
+        .pseudo-head{
+            z-index: 2;
+            border-radius: 50px 50px 0 0;
+            width: 100%;
+            height: 50px;
+            background-color: #FFF;
+        }
+        [class^="ojo-"]{
+            animation-name: blink;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes blink{
+            0%{
+                transform: scale(1,1);
+            }
+            5%{
+                transform: translateY(2px) scale(1, .2);
+            }
+            10%{
+                transform: translateY(0px) scale(1,1);
+            }
+        }
+        .oreja-l{
+            z-index: -10;
+            position: absolute;
+            width: 15px;
+            height: 50px;
+            background-color: #FAC4CF;
+            top: -30px;
+            left: 10px;
+            box-sizing: border-box;
+            border: 5px solid #FFF;
+            border-top-left-radius: 10px 15px;
+            border-top-right-radius: 10px 15px;
+            box-shadow: 5px 0px 5px rgba(0, 0, 0, .15), -5px 0px 5px rgba(0, 0, 0, .15);
+        }
+        .oreja-r{
+            z-index: -10;
+            position: absolute;
+            width: 15px;
+            height: 50px;
+            background-color: #FAC4CF;
+            top: -30px;
+            right: 10px;
+            box-sizing: border-box;
+            border: 5px solid #FFF;
+            border-top-left-radius: 10px 15px;
+            border-top-right-radius: 10px 15px;
+            box-shadow: 5px 0px 5px rgba(0, 0, 0, .15), -5px 0px 5px rgba(0, 0, 0, .15);
+        }
+        .ojo-l{
+            position: absolute;
+            top: 5%;
+            left: 20px;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .ojo-r{
+            position: absolute;
+            top: 5%;
+            right: 20px;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .layer-1{
+            z-index: 1;
+            height: 450px;
+            width: 80px;
+            background-color: #FFF;
+            bottom: 0;
+            right: 60px;
+
+            animation-name: bunny-movement;
+            animation-duration: .9s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        @keyframes bunny-movement{
+            0%{
+                transform: translateY(0);
+            }
+            25%{
+                transform: translateY(50px);
+            }
+            100%{
+                transform: translateY(0);
+            }
+        }
+        .layer-1 input[type=checkbox]{
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .layer-2{
+            z-index: 2;
+            height: 450px;
+            width: 80px;
+            background-color: #FFF;
+            bottom: 0;
+            left: 60px;
+
+            animation-name: bunny-movement;
+            animation-duration: .9s;
+            animation-delay: 2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .layer-3{
+            z-index: 3;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 220px;
+            height: 400px;
+            background-color: #BB6D50;
+        }
+        .layer-4{
+            z-index: 4;
+            height: 350px;
+            width: 80px;
+            background-color: #FFF;
+            bottom: 0;
+            left: 50px;
+            animation-name: bunny-movement;
+            animation-duration: 1.5s;
+            animation-delay: 3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .layer-5{
+            z-index: 5;
+            bottom: 0px;
+            width: 200px;
+            height: 300px;
+            background-color: #BB6D50;
+        }
+        .layer-6{
+            z-index: 6;
+            height: 250px;
+            width: 80px;
+            background-color: #FFF;
+            bottom: 0;
+            right:50px;
+            animation-name: bunny-movement;
+            animation-duration: 2s;
+            animation-delay: 3.5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        .layer-7{
+            z-index: 7;
+            bottom: 0px;
+            right: 0px;
+            width: 200px;
+            height: 200px;
+            background-color: #BB6D50;
+        }
+        .layer-8{
+            /*center*/
+            z-index: 8;
+            bottom: 0;
+            background-color: #66A167;
+            width: 80px;
+            height: 130px;
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            border-radius: 50px 50px 0 0;
+        }
+        .layer-9{
+            /*right*/
+            z-index: 9;
+            bottom: 0;
+            background-color: #66A167;
+            width: 80px;
+            height: 105px;
+            right: 35px;
+            border-radius: 50px 50px 0 0;
+        }
+        .layer-10{
+            /*left*/
+            z-index: 10;
+            bottom: 0;
+            background-color: #66A167;
+            width: 80px;
+            height: 95px;
+            left: 35px;
+            border-radius: 50px 50px 0 0;
+        }
+        .layer-11{
+            z-index: 11;
+            bottom: 0;
+            left: 0;
+            width: 90px;
+            height: 110px;
+            background-color: #FFF;
+            border-radius: 50px 50px 0 0;
+        }
+        .layer-12{
+            z-index: 12;
+            bottom: -10px;
+            left: 80px;
+            height: 80px;
+            width: 50px;
+            background-color: #FFF;
+            border-radius:  0 50px 50px 0 ;
+        }
+        .layer-13{
+            z-index: 13;
+            bottom: 0;
+            right: 0;
+            width: 90px;
+            height: 110px;
+            background-color: #FFF;
+            border-radius: 50px 50px 0 0;
+        }
+        .layer-14{
+            z-index: 14;
+            bottom: -10px;
+            right: 80px;
+            height: 80px;
+            width: 50px;
+            background-color: #FFF;
+            border-radius: 50px 0 0 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="common cabeza layer-1">
+            <!-- conejo1 -->
+            <input type="checkbox" name="" id="">
+            <div class="pseudo-head"></div>
+            <div class="oreja-l"></div>
+            <div class="oreja-r"></div>
+            <div class="ojo-l"></div>
+            <div class="ojo-r"></div>
+        </div>
+        <div class="common cabeza layer-2">
+            <!-- conejo2 -->
+            <div class="pseudo-head"></div>
+            <div class="oreja-l"></div>
+            <div class="oreja-r"></div>
+            <div class="ojo-l"></div>
+            <div class="ojo-r"></div>
+        </div>
+        <div class="common dirt layer-3">
+            <div class="grass"></div>
+            <div class="grass-2"></div>
+        </div>
+        <div class="common cabeza layer-4">
+            <!-- conejo3 -->
+            <div class="pseudo-head"></div>
+            <div class="oreja-l"></div>
+            <div class="oreja-r"></div>
+            <div class="ojo-l"></div>
+            <div class="ojo-r"></div>
+        </div>
+        <div class="common dirt layer-5">
+            <div class="grass"></div>
+            <div class="grass-2"></div>
+        </div>
+        <div class="common cabeza layer-6">
+            <!-- conejo4 -->
+            <div class="pseudo-head"></div>
+            <div class="oreja-l"></div>
+            <div class="oreja-r"></div>
+            <div class="ojo-l"></div>
+            <div class="ojo-r"></div>
+        </div>
+        <div class="common dirt layer-7">
+            <div class="grass"></div>
+            <div class="grass-2"></div>
+        </div>
+        <div class="common layer-8"></div>
+        <div class="common layer-9"></div>
+        <div class="common layer-10"></div>
+        <div class="common layer-11"></div>
+        <div class="common layer-12"></div>
+        <div class="common layer-13"></div>
+        <div class="common layer-14"></div>
+
+    </div>
+</body>
+</html>
